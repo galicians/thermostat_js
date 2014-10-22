@@ -3,6 +3,9 @@ function Thermostat() {
 	this.temperature = 20
 	this.isPowerSaverOn = true
 	this.minimumTemperature = TEMPMIN
+	this.maximumTemperature = 25
+	this.scale = 'Celsius(˚C)'
+
 }
 
 
@@ -21,3 +24,20 @@ Thermostat.prototype.decreaseTemperature = function() {
 Thermostat.prototype.decreaseTemperatureBy = function(degrees) {
 	this.temperature -= degrees;
 };
+
+Thermostat.prototype.turnOffPowerSaving = function() {
+	this.isPowerSaverOn = false
+	this.maximumTemperature = 32
+}
+
+Thermostat.prototype.turnOnPowerSaving = function() {
+	this.isPowerSaverOn = true
+}
+
+Thermostat.prototype.reset = function() {
+	this.temperature = 20
+}
+
+Thermostat.prototype.changeScale = function() {
+	this.scale === 'Celsius(˚C)' ? this.scale = 'Fahrenheit (˚F)' : this.scale = 'Celsius(˚C)'
+}
