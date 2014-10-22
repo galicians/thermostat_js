@@ -1,6 +1,7 @@
 function Thermostat() {
 	var TEMPMIN = 10
 	this.temperature = 20
+	this.temperatureInFahrenheit = this.temperature * 1.8 + 32
 	this.isPowerSaverOn = true
 	this.minimumTemperature = TEMPMIN
 	this.maximumTemperature = 25
@@ -39,16 +40,16 @@ Thermostat.prototype.reset = function() {
 
 Thermostat.prototype.changeScaleToCelsius = function() {
 	this.scale = 'Celsius(˚C)' ;
-	this.temperature = (this.temperature - 32) / 1.8;
-	this.minimumTemperature = (this.minimumTemperature - 32) / 1.8;
-	this.maximumTemperature = (this.maximumTemperature - 32) / 1.8;
+	// this.temperature = (this.temperature - 32) / 1.8;
+	// this.minimumTemperature = (this.minimumTemperature - 32) / 1.8;
+	// this.maximumTemperature = (this.maximumTemperature - 32) / 1.8;
 }
 
 Thermostat.prototype.changeScaleToFahrenheit = function() {
 	this.scale = 'Fahrenheit (˚F)' ;
-	this.temperature = (this.temperature * 1.8) + 32 ;
-	this.minimumTemperature = (this.minimumTemperature * 1.8) + 32 ;
-	this.maximumTemperature = (this.maximumTemperature * 1.8) + 32 ;
+	// this.temperature = (this.temperature * 1.8) + 32 ;
+	// this.minimumTemperature = (this.minimumTemperature * 1.8) + 32 ;
+	// this.maximumTemperature = (this.maximumTemperature * 1.8) + 32 ;
 }
 
 Thermostat.prototype.displayColor = function() {

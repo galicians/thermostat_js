@@ -44,7 +44,7 @@ describe("thermostat", function() {
 			expect(thermostat.maximumTemperature).toEqual(25)
 		});
 
-		it("shouldn't be able to increase to 26",function(){
+		it("can't have a temperature higher than 25 degrees Celsius",function(){
 			thermostat.increaseTemperatureBy(6);
 			expect(thermostat.temperature).toEqual(25);
 		});
@@ -69,12 +69,9 @@ describe("thermostat", function() {
 			expect(thermostat.displayColor()).toEqual('Yellow')
 		});
 
-		
-
 	})
 
 	describe("custom options", function() {
-		
 
 		it("can increase the temperature by request", function() {
 			thermostat.increaseTemperatureBy(2)
@@ -114,15 +111,9 @@ describe("thermostat", function() {
 			expect(thermostat.displayColor()).toEqual('Red');
 		});
 
-		it("should change the degrees from celsius to Fahrenheit when changing scale", function() {
+		it("can display degrees in Fahrenheit after changing scale to Fahrenheit", function() {
 			thermostat.changeScaleToFahrenheit()
-			expect(thermostat.temperature).toEqual(68)
-		});
-
-		it('should change the degrees back to celsius when changing scale',function(){
-			thermostat.changeScaleToFahrenheit()
-			thermostat.changeScaleToCelsius()
-			expect(thermostat.temperature).toEqual(20)
+			expect(thermostat.temperatureInFahrenheit).toEqual(68)
 		});
 
 	})
@@ -132,8 +123,14 @@ describe("thermostat", function() {
 			thermostat.turnOffPowerSaving()
 			expect(thermostat.maximumTemperature).toEqual(32)
 		});
-		
 
+		it("cant' have a temperature higher than 32 degrees Celsius",function(){
+			thermostat.turnOffPowerSaving();
+			thermostat.increaseTemperatureBy(15);
+			expect(thermostat.maximumTemperature).toEqual(32);
+
+		});
+		
 
 	});
 })
