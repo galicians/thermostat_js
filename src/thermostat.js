@@ -1,7 +1,7 @@
 function Thermostat() {
 	var TEMPMIN = 10
 	this.temperature = 20
-	this.temperatureInFahrenheit = this.temperature * 1.8 + 32
+	this.temperatureInFahrenheit = this.celsiusToFahrenheit(this.temperature);
 	this.isPowerSaverOn = true
 	this.minimumTemperature = TEMPMIN
 	this.maximumTemperature = 25
@@ -67,3 +67,11 @@ Thermostat.prototype.displayColor = function() {
 	if(this.temperature >= 25){return 'Red'};
 	return 'Yellow'
 }
+
+Thermostat.prototype.celsiusToFahrenheit = function(degreesC) {
+	return degreesC * 1.8 + 32;
+};
+
+Thermostat.prototype.fahrenheitToCelsius = function(degreesF) {
+	return (degreesF - 32) / 1.8;
+};

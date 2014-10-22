@@ -74,6 +74,14 @@ describe("thermostat", function() {
 			expect(thermostat.displayColor()).toEqual('Yellow')
 		});
 
+		it('can convert degrees Celsius in degrees Fahrenheit',function(){
+			expect(thermostat.celsiusToFahrenheit(20)).toEqual(68);
+		});
+
+		it('can convert degrees Fahrenheit to degrees Celsius',function(){
+			expect(thermostat.fahrenheitToCelsius(68)).toEqual(20);
+		});
+
 	})
 
 	describe("custom options", function() {
@@ -114,40 +122,44 @@ describe("thermostat", function() {
 
 	describe('when in degrees Fahrenheit',function(){
 
+		beforeEach(function(){
+			thermostat.changeScaleToFahrenheit();
+		});
+
 		it("can display degrees in Fahrenheit after changing scale to Fahrenheit", function() {
-			thermostat.changeScaleToFahrenheit()
-			expect(thermostat.temperatureInFahrenheit).toEqual(68)
+			expect(thermostat.temperatureInFahrenheit).toEqual(68);
 		});
 
 		it('can change the scale back to Celsius',function(){
-			thermostat.changeScaleToFahrenheit();
 			thermostat.changeScaleToCelsius();
 			expect(thermostat.scale).toEqual('Celsius(˚C)');
 		});
 
 		it('can increase temperature by 1 degree Fahrenheit',function(){
-			thermostat.changeScaleToFahrenheit();
 			thermostat.increaseTemperatureInFahrenheit();
 			expect(thermostat.temperatureInFahrenheit).toEqual(69);
 		});
 
 		it('can increase temperature by request',function(){
-			thermostat.changeScaleToFahrenheit();
 			thermostat.increaseTemperatureInFahrenheitBy(5);
 			expect(thermostat.temperatureInFahrenheit).toEqual(73);
 		});
 
 		it('can decrease temperature by 1 degree Fahrenheit',function(){
-			thermostat.changeScaleToFahrenheit();
 			thermostat.decreaseTemperatureInFahrenheit();
 			expect(thermostat.temperatureInFahrenheit).toEqual(67);
 		});
 
 		it('can decrease temperature by request',function(){
-			thermostat.changeScaleToFahrenheit();
 			thermostat.decreaseTemperatureInFahrenheitBy(5);
 			expect(thermostat.temperatureInFahrenheit).toEqual(63);
 		});
+
+		// it("can't have a temperature lower than 50 degrees F",function(){
+		// 	thermostat.decreaseTemperatureInFahrenheitBy(30);
+		// 	expect(thermostat.temperatureInFahrenheit).toEqual(50);
+
+		// });
 
 	});
 
