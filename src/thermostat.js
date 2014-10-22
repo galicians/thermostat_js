@@ -22,7 +22,7 @@ Thermostat.prototype.decreaseTemperature = function() {
 }
 
 Thermostat.prototype.decreaseTemperatureBy = function(degrees) {
-	this.temperature -= degrees;
+	this.temperature -= Math.min(this.temperature - this.minimumTemperature, degrees);
 };
 
 Thermostat.prototype.turnOffPowerSaving = function() {

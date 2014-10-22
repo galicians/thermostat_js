@@ -40,6 +40,11 @@ describe("thermostat", function() {
 			expect(thermostat.minimumTemperature).toEqual(10);
 		});
 
+		it("can't have a temperature lower than ten degrees Celsius",function(){
+			thermostat.decreaseTemperatureBy(15);
+			expect(thermostat.temperature).toEqual(10);
+		});
+
 		it("should have max temperature 25 degrees(power saving mode on)", function() {
 			expect(thermostat.maximumTemperature).toEqual(25)
 		});
