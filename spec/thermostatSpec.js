@@ -44,6 +44,11 @@ describe("thermostat", function() {
 			expect(thermostat.maximumTemperature).toEqual(25)
 		});
 
+		it("shouldn't be able to increase to 26",function(){
+			thermostat.increaseTemperatureBy(6);
+			expect(thermostat.temperature).toEqual(25);
+		});
+
 		it('can turn power saving mode off',function(){
 			thermostat.turnOffPowerSaving()
 			expect(thermostat.isPowerSaverOn).toEqual(false);
@@ -64,14 +69,16 @@ describe("thermostat", function() {
 			expect(thermostat.displayColor()).toEqual('Yellow')
 		});
 
+		
+
 	})
 
 	describe("custom options", function() {
 		
 
 		it("can increase the temperature by request", function() {
-			thermostat.increaseTemperatureBy(12)
-			expect(thermostat.temperature).toBe(32)
+			thermostat.increaseTemperatureBy(2)
+			expect(thermostat.temperature).toBe(22)
 		})
 
 		it("can decrease the temperature by request", function() {
@@ -87,13 +94,13 @@ describe("thermostat", function() {
 		});
 
 		it('can change the scale to Fahrenheit',function(){
-			thermostat.changeScale()
+			thermostat.changeScaleToFahrenheit();
 			expect(thermostat.scale).toEqual('Fahrenheit (˚F)');
 		});
 
 		it('can change the scale to Celsius',function(){
-			thermostat.scale = 'Fahrenheit (˚F)'
-			thermostat.changeScale()
+			thermostat.changeScaleToFahrenheit();
+			thermostat.changeScaleToCelsius();
 			expect(thermostat.scale).toEqual('Celsius(˚C)');
 		});
 
@@ -108,14 +115,13 @@ describe("thermostat", function() {
 		});
 
 		it("should change the degrees from celsius to Fahrenheit when changing scale", function() {
-			thermostat.changeScale()
-			console.log(thermostat.scale)
+			thermostat.changeScaleToFahrenheit()
 			expect(thermostat.temperature).toEqual(68)
 		});
 
 		it('should change the degrees back to celsius when changing scale',function(){
-			thermostat.changeScale()
-			thermostat.changeScale()
+			thermostat.changeScaleToFahrenheit()
+			thermostat.changeScaleToCelsius()
 			expect(thermostat.temperature).toEqual(20)
 		});
 
