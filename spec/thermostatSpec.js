@@ -18,7 +18,7 @@ describe("thermostat", function() {
 			expect(thermostat.temperature).toBeDefined()
 		})
 
-		it("thermostat should have 20 degrees as a default", function() {
+		it("thermostat should have 20 degrees Celsius as a default", function() {
 			expect(thermostat.temperature).toEqual(20)
 		})
 
@@ -26,17 +26,17 @@ describe("thermostat", function() {
 			expect(thermostat.isPowerSaverOn).toBe(true)
 		})
 
-		it("can increase the temperature by one degree", function() {
+		it("can increase the temperature by one degree Celsius", function() {
 			thermostat.increaseTemperature()
 			expect(thermostat.temperature).toBe(21)
 		})
 
-		it("can decrease the temperature by one degree", function() {
+		it("can decrease the temperature by one degree Celsius", function() {
 			thermostat.decreaseTemperature()
 			expect(thermostat.temperature).toBe(19)
 		})
 
-		it('has a minimum temperature of ten degrees',function(){
+		it('has a minimum temperature of ten degrees Celsius',function(){
 			expect(thermostat.minimumTemperature).toEqual(10);
 		});
 
@@ -45,7 +45,7 @@ describe("thermostat", function() {
 			expect(thermostat.temperature).toEqual(10);
 		});
 
-		it("should have max temperature 25 degrees(power saving mode on)", function() {
+		it("should have max temperature 25 degrees Celsius(power saving mode on)", function() {
 			expect(thermostat.maximumTemperature).toEqual(25)
 		});
 
@@ -65,9 +65,9 @@ describe("thermostat", function() {
 			expect(thermostat.isPowerSaverOn).toEqual(true)
 		})
 
-		it('should have the temperature in celsius', function() {
+		it('should show the temperature in degrees celsius', function() {
 			expect(thermostat.scale).toEqual('Celsius(˚C)')
-		
+	
 		})
 
 		it('should color the display in yellow',function(){
@@ -92,7 +92,6 @@ describe("thermostat", function() {
 			thermostat.increaseTemperatureBy(5);
 			thermostat.reset();
 			expect(thermostat.temperature).toEqual(20);
-
 		});
 
 		it('can change the scale to Fahrenheit',function(){
@@ -100,31 +99,36 @@ describe("thermostat", function() {
 			expect(thermostat.scale).toEqual('Fahrenheit (˚F)');
 		});
 
-		it('can change the scale to Celsius',function(){
-			thermostat.changeScaleToFahrenheit();
-			thermostat.changeScaleToCelsius();
-			expect(thermostat.scale).toEqual('Celsius(˚C)');
-		});
-
-		it('should display green when the temperature is < 18 degrees', function() {
+		it('should display green when the temperature is < 18 degrees Celsius', function() {
 			thermostat.temperature = 17
 			expect(thermostat.displayColor()).toEqual('Green')
 		})
 
-		it('should display red if temperature is higher or equal to 25',function(){
+		it('should display red if temperature is higher or equal to 25 Celsius',function(){
 			thermostat.temperature = 25
 			expect(thermostat.displayColor()).toEqual('Red');
 		});
+
+
+	})
+
+	describe('when in degrees Fahrenheit',function(){
 
 		it("can display degrees in Fahrenheit after changing scale to Fahrenheit", function() {
 			thermostat.changeScaleToFahrenheit()
 			expect(thermostat.temperatureInFahrenheit).toEqual(68)
 		});
 
-	})
+		it('can change the scale back to Celsius',function(){
+			thermostat.changeScaleToFahrenheit();
+			thermostat.changeScaleToCelsius();
+			expect(thermostat.scale).toEqual('Celsius(˚C)');
+		});
+
+	});
 
 	describe('when power save mode is off',function(){
-		it('has a max temperature of 32 degrees',function(){
+		it('has a max temperature of 32 degrees Celsius',function(){
 			thermostat.turnOffPowerSaving()
 			expect(thermostat.maximumTemperature).toEqual(32)
 		});
