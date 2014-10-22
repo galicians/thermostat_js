@@ -137,6 +137,18 @@ describe("thermostat", function() {
 			expect(thermostat.temperatureInFahrenheit).toEqual(73);
 		});
 
+		it('can decrease temperature by 1 degree Fahrenheit',function(){
+			thermostat.changeScaleToFahrenheit();
+			thermostat.decreaseTemperatureInFahrenheit();
+			expect(thermostat.temperatureInFahrenheit).toEqual(67);
+		});
+
+		it('can decrease temperature by request',function(){
+			thermostat.changeScaleToFahrenheit();
+			thermostat.decreaseTemperatureInFahrenheitBy(5);
+			expect(thermostat.temperatureInFahrenheit).toEqual(63);
+		});
+
 	});
 
 	describe('when power save mode is off',function(){

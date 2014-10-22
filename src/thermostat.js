@@ -54,6 +54,14 @@ Thermostat.prototype.increaseTemperatureInFahrenheitBy = function(degreesF) {
 	this.temperatureInFahrenheit += degreesF ;
 };
 
+Thermostat.prototype.decreaseTemperatureInFahrenheit = function(degreesF) {
+	this.decreaseTemperatureInFahrenheitBy(1);
+};
+
+Thermostat.prototype.decreaseTemperatureInFahrenheitBy = function(degreesF) {
+	this.temperatureInFahrenheit -= degreesF ;
+};
+
 Thermostat.prototype.displayColor = function() {
 	if(this.temperature < 18){return 'Green'};
 	if(this.temperature >= 25){return 'Red'};
