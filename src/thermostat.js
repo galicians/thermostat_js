@@ -13,16 +13,16 @@ Thermostat.prototype.increaseTemperature = function() {
 	this.increaseTemperatureBy(1);
 }
 
-Thermostat.prototype.increaseTemperatureBy = function(degrees) {
-	this.temperature += Math.min(this.maximumTemperature - this.temperature, degrees);
+Thermostat.prototype.increaseTemperatureBy = function(degreesC) {
+	this.temperature += Math.min(this.maximumTemperature - this.temperature, degreesC);
 }
 
 Thermostat.prototype.decreaseTemperature = function() {
 	this.decreaseTemperatureBy(1);
 }
 
-Thermostat.prototype.decreaseTemperatureBy = function(degrees) {
-	this.temperature -= Math.min(this.temperature - this.minimumTemperature, degrees);
+Thermostat.prototype.decreaseTemperatureBy = function(degreesC) {
+	this.temperature -= Math.min(this.temperature - this.minimumTemperature, degreesC);
 };
 
 Thermostat.prototype.turnOffPowerSaving = function() {
@@ -40,17 +40,19 @@ Thermostat.prototype.reset = function() {
 
 Thermostat.prototype.changeScaleToCelsius = function() {
 	this.scale = 'Celsius(˚C)' ;
-	// this.temperature = (this.temperature - 32) / 1.8;
-	// this.minimumTemperature = (this.minimumTemperature - 32) / 1.8;
-	// this.maximumTemperature = (this.maximumTemperature - 32) / 1.8;
 }
 
 Thermostat.prototype.changeScaleToFahrenheit = function() {
 	this.scale = 'Fahrenheit (˚F)' ;
-	// this.temperature = (this.temperature * 1.8) + 32 ;
-	// this.minimumTemperature = (this.minimumTemperature * 1.8) + 32 ;
-	// this.maximumTemperature = (this.maximumTemperature * 1.8) + 32 ;
 }
+
+Thermostat.prototype.increaseTemperatureInFahrenheit = function(degreesF) {
+	this.increaseTemperatureInFahrenheitBy(1);
+};
+
+Thermostat.prototype.increaseTemperatureInFahrenheitBy = function(degreesF) {
+	this.temperatureInFahrenheit += degreesF ;
+};
 
 Thermostat.prototype.displayColor = function() {
 	if(this.temperature < 18){return 'Green'};

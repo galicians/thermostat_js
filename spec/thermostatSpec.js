@@ -125,6 +125,18 @@ describe("thermostat", function() {
 			expect(thermostat.scale).toEqual('Celsius(˚C)');
 		});
 
+		it('can increase temperature by 1 degree Fahrenheit',function(){
+			thermostat.changeScaleToFahrenheit();
+			thermostat.increaseTemperatureInFahrenheit();
+			expect(thermostat.temperatureInFahrenheit).toEqual(69);
+		});
+
+		it('can increase temperature by request',function(){
+			thermostat.changeScaleToFahrenheit();
+			thermostat.increaseTemperatureInFahrenheitBy(5);
+			expect(thermostat.temperatureInFahrenheit).toEqual(73);
+		});
+
 	});
 
 	describe('when power save mode is off',function(){
