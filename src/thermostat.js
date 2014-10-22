@@ -40,4 +40,11 @@ Thermostat.prototype.reset = function() {
 
 Thermostat.prototype.changeScale = function() {
 	this.scale === 'Celsius(˚C)' ? this.scale = 'Fahrenheit (˚F)' : this.scale = 'Celsius(˚C)'
+	this.scale === 'Fahrenheit (˚F)' ? this.temperature = (this.temperature * 1.8) + 32 : this.temperature = (this.temperature - 32) / 1.8
+}
+
+Thermostat.prototype.displayColor = function() {
+	if(this.temperature < 18){return 'Green'};
+	if(this.temperature >= 25){return 'Red'};
+	return 'Yellow'
 }

@@ -60,7 +60,9 @@ describe("thermostat", function() {
 		
 		})
 
-
+		it('should color the display in yellow',function(){
+			expect(thermostat.displayColor()).toEqual('Yellow')
+		});
 
 	})
 
@@ -93,6 +95,28 @@ describe("thermostat", function() {
 			thermostat.scale = 'Fahrenheit (˚F)'
 			thermostat.changeScale()
 			expect(thermostat.scale).toEqual('Celsius(˚C)');
+		});
+
+		it('should display green when the temperature is < 18 degrees', function() {
+			thermostat.temperature = 17
+			expect(thermostat.displayColor()).toEqual('Green')
+		})
+
+		it('should display red if temperature is higher or equal to 25',function(){
+			thermostat.temperature = 25
+			expect(thermostat.displayColor()).toEqual('Red');
+		});
+
+		it("should change the degrees from celsius to Fahrenheit when changing scale", function() {
+			thermostat.changeScale()
+			console.log(thermostat.scale)
+			expect(thermostat.temperature).toEqual(68)
+		});
+
+		it('should change the degrees back to celsius when changing scale',function(){
+			thermostat.changeScale()
+			thermostat.changeScale()
+			expect(thermostat.temperature).toEqual(20)
 		});
 
 	})
