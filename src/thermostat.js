@@ -51,7 +51,7 @@ Thermostat.prototype.increaseTemperatureInFahrenheit = function(degreesF) {
 };
 
 Thermostat.prototype.increaseTemperatureInFahrenheitBy = function(degreesF) {
-	this.temperatureInFahrenheit += degreesF ;
+	this.temperatureInFahrenheit += Math.min(this.celsiusToFahrenheit(this.maximumTemperature) - this.temperatureInFahrenheit, degreesF);
 };
 
 Thermostat.prototype.decreaseTemperatureInFahrenheit = function(degreesF) {
@@ -59,7 +59,7 @@ Thermostat.prototype.decreaseTemperatureInFahrenheit = function(degreesF) {
 };
 
 Thermostat.prototype.decreaseTemperatureInFahrenheitBy = function(degreesF) {
-	this.temperatureInFahrenheit -= degreesF ;
+	this.temperatureInFahrenheit -= Math.min(this.temperatureInFahrenheit - this.celsiusToFahrenheit(this.minimumTemperature), degreesF);
 };
 
 Thermostat.prototype.displayColor = function() {

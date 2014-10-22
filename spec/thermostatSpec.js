@@ -155,11 +155,24 @@ describe("thermostat", function() {
 			expect(thermostat.temperatureInFahrenheit).toEqual(63);
 		});
 
-		// it("can't have a temperature lower than 50 degrees F",function(){
-		// 	thermostat.decreaseTemperatureInFahrenheitBy(30);
-		// 	expect(thermostat.temperatureInFahrenheit).toEqual(50);
+		it("can't have a temperature lower than 50 degrees F",function(){
+			thermostat.decreaseTemperatureInFahrenheitBy(30);
+			expect(thermostat.temperatureInFahrenheit).toEqual(50);
 
-		// });
+		});
+
+		it("can't have a temperature higher than 77 degrees F when in power saving mode",function(){
+			thermostat.increaseTemperatureInFahrenheitBy(30);
+			expect(thermostat.temperatureInFahrenheit).toEqual(77);
+
+		});
+
+		it("can't have a temperature higher than 89.6 degrees F when power saving mode is off",function(){
+			thermostat.turnOffPowerSaving();
+			thermostat.increaseTemperatureInFahrenheitBy(50);
+			expect(thermostat.temperatureInFahrenheit).toEqual(89.6);
+
+		});
 
 	});
 
