@@ -36,20 +36,29 @@ describe("thermostat", function() {
 			expect(thermostat.temperature).toBe(19)
 		})
 
+		it('has a minimum temperature of ten degrees',function(){
+			expect(thermostat.minimumTemperature).toEqual(10);
+		});
+
 	})
 
 	describe("custom options", function() {
 		
-	beforeEach(function() {
-		thermostat = new Thermostat
-	})
 
 		it("can increase the temperature by request", function() {
 			thermostat.increaseTemperatureBy(12)
 			expect(thermostat.temperature).toBe(32)
 		})
 
-
+		it("can decrease the temperature by request", function() {
+			thermostat.decreaseTemperatureBy(7)
+			expect(thermostat.temperature).toBe(13)
+		})
 
 	})
+
+	describe('when power save mode is on',function(){
+		
+
+	});
 })
