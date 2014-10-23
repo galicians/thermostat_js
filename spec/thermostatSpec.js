@@ -66,7 +66,7 @@ describe("thermostat", function() {
 		})
 
 		it('should show the temperature in degrees celsius', function() {
-			expect(thermostat.scale).toEqual('Celsius(˚C)')
+			expect(thermostat.scale).toEqual('C')
 	
 		})
 
@@ -104,7 +104,7 @@ describe("thermostat", function() {
 
 		it('can change the scale to Fahrenheit',function(){
 			thermostat.changeScaleToFahrenheit();
-			expect(thermostat.scale).toEqual('Fahrenheit (˚F)');
+			expect(thermostat.scale).toEqual('F');
 		});
 
 		it('should display green when the temperature is < 18 degrees Celsius', function() {
@@ -126,13 +126,13 @@ describe("thermostat", function() {
 			thermostat.changeScaleToFahrenheit();
 		});
 
-		it("can display degrees in Fahrenheit after changing scale to Fahrenheit", function() {
-			expect(thermostat.temperatureInFahrenheit).toEqual(68);
+		it("should display temperature in Fahrenheit", function() {
+			expect(thermostat.temperatureToDisplay()).toEqual(68);
 		});
 
 		it('can change the scale back to Celsius',function(){
 			thermostat.changeScaleToCelsius();
-			expect(thermostat.scale).toEqual('Celsius(˚C)');
+			expect(thermostat.scale).toEqual('C');
 		});
 
 		it('can increase temperature by 1 degree Fahrenheit',function(){
