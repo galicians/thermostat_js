@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thermostat</title>
+    <link rel="stylesheet" href="./css/stylesheet.css">
+  </head>
+  <body>
+    <section class="temperature">
+      <h2>Current temperature</h2>
+      <h1 class="temp">The temperature now</h1>
+      <aside class="temp" id="scale">&deg;</aside>
+      <aside>
+      <h2>Temperature outside</h2>
+      <h2 class="temp" id="tempnow"></h1>
+      <aside class="temp" id="scale">&deg;C</aside>
+      <aside>
+        <nav>
+          <h2>Change temperature</h2>
+          <ul>
+            <li><a href="#" class="increase_temperature">+</a></li>
+            <li><a href="#" class="decrease_temperature">-</a></li>
+            <li><a href="#" class="reset">Reset</a></li>
+          </ul>
+          <h2 class="power_saving_mode">Power Saver Mode is On</h2>
+          <ul>
+            <li><a href="#" class="power_saving_on">On</a></li>
+            <li><a href="#" class="power_saving_off">Off</a></li>
+          </ul>
+          <h2>Scale</h2>
+          <ul>
+            <li><a href="#" class="celsius">&deg;C</a></li>
+            <li><a href="#" class="fahrenheit">&deg;F</a></li>
+          </ul>
+        </nav>
+        </aside>
+    </section>
+
+
+  <script src="jquery-2.1.1.min.js"></script>
+  <script src="thermostat.js"></script>
+  <script src="interface.js"></script>
+  <script>
+    // var currentTemp;
+
+    $.getJSON('./weather', function(data) {
+      console.log(data)
+      var currentTemp = (data['list'][1]['main']['temp']);
+      console.log(currentTemp);
+      $('#tempnow').text(currentTemp)
+      });
+  </script>
+  </script>
+  </body>
+</html>
