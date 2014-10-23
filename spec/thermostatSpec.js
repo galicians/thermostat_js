@@ -167,10 +167,10 @@ describe("thermostat", function() {
 
 		});
 
-		it("can't have a temperature higher than 89.6 degrees F when power saving mode is off",function(){
+		it("can't have a temperature higher than 90 (89.6 rounded up) degrees F when power saving mode is off",function(){
 			thermostat.turnOffPowerSaving();
 			thermostat.increaseTemperatureInFahrenheitBy(50);
-			expect(thermostat.temperatureInFahrenheit).toEqual(89.6);
+			expect(thermostat.temperatureInFahrenheit).toEqual(90);
 
 		});
 
