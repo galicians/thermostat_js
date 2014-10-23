@@ -84,9 +84,9 @@ Thermostat.prototype.displayColor = function() {
 }
 
 Thermostat.prototype.celsiusToFahrenheit = function(degreesC) {
-	return degreesC * 1.8 + 32;
+	return Math.round(degreesC * 1.8 + 32);
 };
 
 Thermostat.prototype.fahrenheitToCelsius = function(degreesF) {
-	return (degreesF - 32) / 1.8;
+	return Math.round((degreesF - 32) / 1.8);
 };
